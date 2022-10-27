@@ -21,8 +21,7 @@ void change_str(char** s1, char** s2)
     *s2 = buffer;
 }
 
-void sort_n_str(char* text, char** positions)
+void sort_n_str(char* text, char** positions, int n)
 {
-
 
 }

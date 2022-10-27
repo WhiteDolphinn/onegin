@@ -1,4 +1,5 @@
 #include "text_reader.h"
+#include "header.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <string.h>
@@ -46,31 +47,39 @@ int num_of_lines(char* text)
     return i+1;
 }
 
-char** begin_of_str_position(char* text, const int SIZE_SYMBOLS)
+struct string* begin_of_str_position(char* text, const int SIZE_SYMBOLS)
 {
     printf("%d\n", SIZE_SYMBOLS);
     const int SIZE_LINES = num_of_lines(text);
-    char** positions = (char**)calloc(SIZE_LINES+1, sizeof(char*));
+    struct string* pos_and_len = (struct string*)calloc(SIZE_LINES+1, sizeof(struct string));
 
-    if(positions == nullptr)
+    //pos_and_len->position = (char**)calloc(SIZE_LINES+1, sizeof(char*));
+
+    if(pos_and_len == nullptr)
     {
         printf("I can't numeric strings(((\n");
         return nullptr;
     }
 
     char* cur_position = 0;
-    *positions = text;
+    pos_and_len -> position = text;
     int i = 1;
 
     for(cur_position = strchr(text, '\0'); cur_position != nullptr && cur_position < text + SIZE_SYMBOLS;
         cur_position = strchr(cur_position + 1, '\0'), i++)
     {
-        *(positions + i) = cur_position + 1;
+        pos_and_len[i].position = cur_position + 1;
+
+        pos_and_len[i-1].length = (size_t)pos_and_len[i].position - (size_t)pos_and_len[i-1].position;
+
+       // *(pos_and_len + i -> position) = cur_position + 1;
     }
+   // printf("%d", i);
+        pos_and_len[i-1].length = (size_t)pos_and_len[i-1].position - (size_t)pos_and_len[i-2].position;
 
     FILE* zalupa = fopen("zalupa.txt", "w");
-    for(int j = 0; j < i; j++)
-        fprintf(zalupa,"%p\n", *(positions + j));
+    for(int j = 0; j < i; j++)                                // для тестировки норм чтения начала строк
+        fprintf(zalupa,"%p %d\n", pos_and_len[j].position, pos_and_len[j].length);
         fclose(zalupa);
-    return positions;
+    return pos_and_len;
 }

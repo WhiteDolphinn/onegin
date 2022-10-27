@@ -3,6 +3,7 @@
 #include <malloc.h>
 #include "text_reader.h"
 #include "sort_str.h"
+#include "header.h"
 
 
 int main()
@@ -13,11 +14,11 @@ int main()
     FILE* onegin2 = fopen("bebra.txt", "wb");
     char* text = text_reader(onegin, name_of_file);
     fclose(onegin);
-    char** positions = begin_of_str_position(text, num_of_symbols(name_of_file));
+    struct string* strings = begin_of_str_position(text, num_of_symbols(name_of_file));
   //  fprintf(onegin2,"%s", text);
     fclose(onegin2);
     free(text);
-    free(positions);
+    free(strings);       ///////////////////
     return 0;
 }
 
