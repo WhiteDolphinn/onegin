@@ -62,7 +62,7 @@ char** begin_of_str_position(char* text, const int SIZE_SYMBOLS)
     *positions = text;
     int i = 1;
 
-    for(cur_position = strchr(text, '\0'); cur_position != nullptr && cur_position < text + SIZE_SYMBOLS;      //yhtht
+    for(cur_position = strchr(text, '\0'); cur_position != nullptr && cur_position < text + SIZE_SYMBOLS;
         cur_position = strchr(cur_position + 1, '\0'), i++)
     {
         *(positions + i) = cur_position + 1;

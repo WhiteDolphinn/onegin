@@ -17,6 +17,7 @@ int main()
   //  fprintf(onegin2,"%s", text);
     fclose(onegin2);
     free(text);
+    free(positions);
     return 0;
 }
 
