@@ -4,6 +4,8 @@
 #include "text_reader.h"
 #include "sort_str.h"
 #include "header.h"
+#include "text_writer.h"
+#include <assert.h>
 
 
 int main()
@@ -11,10 +13,21 @@ int main()
     setlocale(LC_ALL, "");
     const char* name_of_file = "onega.txt";
     FILE* onegin = fopen(name_of_file, "rb");
-    FILE* onegin2 = fopen("bebra.txt", "wb");
+    FILE* onegin2 = fopen("bebra.txt", "w");
+
     char* text = text_reader(onegin, name_of_file);
     fclose(onegin);
-    struct string* strings = begin_of_str_position(text, num_of_symbols(name_of_file));
+
+    int SIZE_LINES = 0;
+   // printf("%d\n", SIZE_LINES);
+
+    struct string* strings = begin_of_str_position(text, num_of_symbols(name_of_file), &SIZE_LINES);
+   // printf("%d\n", SIZE_LINES);
+
+    sort_n_str(strings, SIZE_LINES);
+
+    text_writer(onegin2, strings, SIZE_LINES);
+
   //  fprintf(onegin2,"%s", text);
     fclose(onegin2);
     free(text);

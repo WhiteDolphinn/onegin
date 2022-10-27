@@ -47,11 +47,11 @@ int num_of_lines(char* text)
     return i+1;
 }
 
-struct string* begin_of_str_position(char* text, const int SIZE_SYMBOLS)
+struct string* begin_of_str_position(char* text, const int SIZE_SYMBOLS, int* SIZE_LINES)
 {
-    printf("%d\n", SIZE_SYMBOLS);
-    const int SIZE_LINES = num_of_lines(text);
-    struct string* pos_and_len = (struct string*)calloc(SIZE_LINES+1, sizeof(struct string));
+    //printf("%d\n", SIZE_SYMBOLS);
+    *SIZE_LINES = num_of_lines(text);
+    struct string* pos_and_len = (struct string*)calloc(*SIZE_LINES+1, sizeof(struct string));
 
     //pos_and_len->position = (char**)calloc(SIZE_LINES+1, sizeof(char*));
 
