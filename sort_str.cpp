@@ -26,8 +26,14 @@ int str_cmp(struct string str1, struct string str2)
 
 int str_cmp_reverse(struct string str1, struct string str2)
 {
-    int pos1 = str1.length;
+   int pos1 = str1.length;
     int pos2 = str2.length;
+
+    while(isalnum((int)(*(str1.position + pos1))) == 0 && pos1 > 0)
+        pos1--;
+
+    while(isalnum((int)(*(str2.position + pos2))) == 0 && pos2 > 0)
+        pos2--;
 
     while(*((str1.position) + pos1) == *((str2.position) + pos2))
     {
