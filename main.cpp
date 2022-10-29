@@ -5,10 +5,13 @@
 #include "sort_str.h"
 #include "header.h"
 #include "text_writer.h"
+#include <stdlib.h>
+
 
 int main()
 {
     setlocale(LC_ALL, "");
+
     const char* name_of_file = "onega.txt";
     FILE* onegin = fopen(name_of_file, "rb");
     FILE* onegin2 = fopen("bebra.txt", "w");
@@ -25,6 +28,10 @@ int main()
 
     sort_n_str(strings, SIZE_LINES);
     text_writer(onegin2, strings, SIZE_LINES);
+
+
+
+    //qsort(strings, SIZE_LINES, sizeof(string), comparatorStringsAbstract);
 
     sort_n_str_reverse(strings, SIZE_LINES);
     text_writer(onegin3, strings, SIZE_LINES);

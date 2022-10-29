@@ -1,10 +1,18 @@
 #include "sort_str.h"
 #include "header.h"
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 
 int str_cmp(struct string str1, struct string str2)
 {
+    while(isalnum((int)(*(str1.position))) == 0 && *(str1.position) != '\0')
+        str1.position++;
+
+    while(isalnum((int)(*(str2.position))) == 0 && *(str2.position) != '\0')
+        str2.position++;
+
+
     while(*(str1.position) == *(str2.position))
     {
         if(*(str1.position) == '\0')
@@ -20,6 +28,7 @@ int str_cmp_reverse(struct string str1, struct string str2)
 {
     int pos1 = str1.length;
     int pos2 = str2.length;
+
     while(*((str1.position) + pos1) == *((str2.position) + pos2))
     {
         if(pos1 < 1 || pos2 < 1)
@@ -33,16 +42,21 @@ int str_cmp_reverse(struct string str1, struct string str2)
 
 void change_str(struct string* s1, struct string* s2)
 {
-    char* buffer_position = s1 -> position;
+    string temp = *s1;
+    *s1 = *s2;
+    *s2 = temp;
+
+  /*  char* buffer_position = s1 -> position;
     s1 -> position = s2 -> position;
     s2 -> position = buffer_position;
     int buffer_length = s1 -> length;
     s1 -> length = s2 -> length;
-    s2 -> length = buffer_length;
+    s2 -> length = buffer_length;*/
 }
 
 void sort_n_str(struct string* strings, int n)
 {
+    //isalnum()
     for(int i = 0; i < n; i++)
         for(int j = 0; j < n - 1; j++)
            if(str_cmp(*(strings + j), *(strings + j + 1)) > 0)
