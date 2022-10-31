@@ -77,37 +77,14 @@ struct string* begin_of_str_position(char* text, const int SIZE_SYMBOLS, int* SI
 
         str_len = 0;
     }
-        //pos_and_len[i-1].position = text + cur_position + 1;
         pos_and_len[i].length = SIZE_SYMBOLS - cur_position;
 
-   /* for(cur_position = strchr(text, '\0'); cur_position != nullptr && cur_position < text + SIZE_SYMBOLS;
-        cur_position = strchr(cur_position + 1, '\0'), i++)
+    if(DEBUG == 1)
     {
-        pos_and_len[i].position = cur_position + 1;
-
-        //pos_and_len[i-1].length = strlen(pos_and_len[i-1].position);
-        pos_and_len[i-1].length = (size_t)pos_and_len[i].position - (size_t)pos_and_len[i-1].position;
-    }
-      //  pos_and_len[i-1].length = strlen(pos_and_len[i-1].position);
-        pos_and_len[i-1].length = (size_t)pos_and_len[i-1].position - (size_t)pos_and_len[i-2].position;*/
-
     FILE* zalupa = fopen("zalupa.txt", "w");
     for(int j = 0; j < i; j++)                                // для тестировки норм чтения начала строк
         fprintf(zalupa,"%p %d\n", pos_and_len[j].position, pos_and_len[j].length);
         fclose(zalupa);
+    }
     return pos_and_len;
 }
-
-/*int currLine = 1;
-int strLen = 0;
-int i = 0;
-for ( ; i < charsCountInOnegin; ++i, ++strLen)
-{
-    if (ch != '\0')
-        continue;
-
-    strings[currLine].start = oneginString + i + 1;
-    strings[currLine++].length = strLen;
-
-    strLen = 0;
-}*/

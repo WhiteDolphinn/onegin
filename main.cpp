@@ -21,25 +21,18 @@ int main()
     fclose(onegin);
 
     int SIZE_LINES = 0;
-    // printf("%d\n", SIZE_LINES);
 
     struct string* strings = begin_of_str_position(text, num_of_symbols(name_of_file), &SIZE_LINES);
-    // printf("%d\n", SIZE_LINES);
 
     sort_n_str(strings, SIZE_LINES);
     text_writer(onegin2, strings, SIZE_LINES);
 
-
-
-    //qsort(strings, SIZE_LINES, sizeof(string), comparatorStringsAbstract);
-
     sort_n_str_reverse(strings, SIZE_LINES);
     text_writer(onegin3, strings, SIZE_LINES);
 
-    //  fprintf(onegin2,"%s", text);
     fclose(onegin2);
     free(text);
-    free(strings);       ///////////////////
+    free(strings);
     return 0;
 }
 
