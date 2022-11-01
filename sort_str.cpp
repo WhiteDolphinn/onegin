@@ -10,7 +10,7 @@ int str_cmp(struct string str1, struct string str2)
         str1.position++;
 
     while(!isalnum(*(str2.position)) && *(str2.position) != '\0')
-        str2.position++;*/////////////////////////
+        str2.position++;*/
 
 
     while(*(str1.position) == *(str2.position))
@@ -29,7 +29,7 @@ int str_cmp_reverse(struct string str1, struct string str2)
    int pos1 = str1.length;
     int pos2 = str2.length;
 
- /*   while(isalnum(*(str1.position + pos1)) == 0 && pos1 > 0)
+   /* while(isalnum(*(str1.position + pos1)) == 0 && pos1 > 0)
         pos1--;
 
     while(isalnum(*(str2.position + pos2)) == 0 && pos2 > 0)

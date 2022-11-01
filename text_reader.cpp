@@ -17,7 +17,7 @@ int num_of_symbols(const char* name_of_file)
 char* text_reader(FILE* onegin, const char* name_of_file)
 {
     const int SIZE = num_of_symbols(name_of_file);
-    char* text = (char*)calloc(SIZE+1, sizeof(char));
+    char* text = (char*)calloc(SIZE+10, sizeof(char));
 
     if(text == nullptr)
     {
@@ -26,7 +26,7 @@ char* text_reader(FILE* onegin, const char* name_of_file)
     }
     int size_text = fread(text, sizeof(char), SIZE, onegin);
 
-    char* temp = (char*)realloc(text, sizeof(char) * size_text);
+    char* temp = (char*)realloc(text, sizeof(char) * size_text + 10);
 
     if(temp == nullptr)
     {
