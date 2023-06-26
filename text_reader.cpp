@@ -81,10 +81,10 @@ struct string* begin_of_str_position(char* text, const int SIZE_SYMBOLS, int* SI
 
     if(DEBUG == 1)
     {
-    FILE* zalupa = fopen("zalupa.txt", "w");
+    FILE* test_reading_str = fopen("test_reading_str.txt", "w");
     for(int j = 0; j < i; j++)                                // для тестировки норм чтения начала строк
-        fprintf(zalupa,"%p %d\n", pos_and_len[j].position, pos_and_len[j].length);
-        fclose(zalupa);
+        fprintf(test_reading_str ,"%p %d\n", pos_and_len[j].position, pos_and_len[j].length);
+        fclose(test_reading_str);
     }
     return pos_and_len;
 }

@@ -62,10 +62,10 @@ void sort_n_str(struct string* strings, int n)
 
     if(DEBUG == 1)
     {
-    FILE* negry_pidorasy = fopen("negry_pidorasy.txt", "wb");
+    FILE* test_reading_beg = fopen("test_reading_beg.txt", "wb");
     for(int j = 0; j < n; j++)                                // для тестировки норм чтения начала строк
-        fprintf(negry_pidorasy,"%p %d\n", strings[j].position, strings[j].length);
-        fclose(negry_pidorasy);
+        fprintf(test_reading_beg ,"%p %d\n", strings[j].position, strings[j].length);
+        fclose(test_reading_beg);
     }
 }
 
@@ -78,9 +78,9 @@ void sort_n_str_reverse(struct string* strings, int n)
 
     if(DEBUG == 1)
     {
-    FILE* churki_pidorasy = fopen("churki_pidorasy.txt", "wb");
+    FILE* test_reading_end = fopen("test_reading_end.txt", "wb");
     for(int j = 0; j < n; j++)                                // для тестировки норм чтения начала строк
-        fprintf(churki_pidorasy,"%p %d\n", strings[j].position, strings[j].length);
-        fclose(churki_pidorasy);
+        fprintf(test_reading_end ,"%p %d\n", strings[j].position, strings[j].length);
+        fclose(test_reading_end);
     }
 }
